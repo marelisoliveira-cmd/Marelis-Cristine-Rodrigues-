@@ -10,7 +10,7 @@ pygame.display.set_caption("Nome da janela")
 
 #Loop principal do jogo
 rodando = True 
-While rodando:
+while rodando:
     for evento in pygame.event.get():
         if evento.type == pygame.QUIT:
             rodando = False 
@@ -20,4 +20,3 @@ While rodando:
 
 # Finalizar o Pygame
 pygame.quit()
-
