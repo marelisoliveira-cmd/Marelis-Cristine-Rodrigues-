@@ -4,7 +4,7 @@ import os
 pygame. init()
 
 # Caminho das imagens
-BASE = os.path.dirname(os.path.abspath( __ file_))
+BASE = os.path.dirname(os.path.abspath(__file__))
 IMG = os.path.join(os.path.dirname(BASE), "imagens")
 
 def carregar_imagem(nome, largura, altura):
@@ -81,6 +81,59 @@ if teclas[pygame.K_LEFT]:
     x -= vel
 
 # Pulo
-    if teclas[pygame.K_SPACE] and not pulando:
-pulando = True
-velocidade_pulo = forca_pulo
+if teclas[pygame.K_SPACE] and not pulando:
+    pulando = True
+    velocidade_pulo = forca_pulo
+
+# Aplicando gravidade
+if pulando:
+    y +- velocidade_pulo
+    velocidade_pulo +- gravidade
+    
+    if y >= chao - TAM_PERSONAGEM:
+        Y = CHAO - TAM_PERSONAGEM
+        pulando = False 
+        
+# Caixa de colisão de personagem 
+player = pygame.Rect(
+    x + 25,
+    y + 20,
+    70,
+    90
+)
+
+# Colisão com obstáculo
+if player.colliderect(obstaculo):
+    x = 70
+    y = chao - TAM_PERSONAGEM
+    mensagem = "Tente novamente"
+    
+# Colisão com objetivo 
+if player.colliderect(objetivo):
+    mensagem = "Você venceu"
+    
+# Colisão com objetivo 
+if player.colliderect(objetivo):
+    mensagem = "Voce venceu"
+    
+# Desenhar com objetivo 
+if player.coliderect(objetivo):
+    mensagem = "Você venceu"
+    
+# Desenhar cenária 
+tela.blit(fundo, (0,0))
+tela.blit(obstaculo_img, (obstaculo.x, obstaculo.y))
+tela.blit(objetivo_img, (objetivo.x, objetivo.y))
+tela.blit(objetivo_img, (objetivo.x, objetivo.y))
+tela.blit(personagem, (x,y))
+
+# MosTRAR MENSAGENS 
+if mensagem:
+    texto = fonte.render(mensagem, True, (0,0,0))
+    tela.blit(texto, (30,30))
+    
+    pygame.display.flip()
+    rel.tick(60)
+    
+pygame.quit()
+
