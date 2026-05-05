@@ -10,7 +10,7 @@ pygame.display.set_caption("Meu primeiro jogo")
 COR_FUNDO = (30, 144, 255)
 
 rodando = True 
-While rodando: 
+while rodando: 
     for evento in pygame.event.get(): 
         if evento.type == pygame.QUIT:
             rodando = False 
